@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Image, Icon, Segment, Button, Header } from 'semantic-ui-react';
 
 const imageNameList = [ 
@@ -31,25 +31,20 @@ const imageNameList = [
 function AvatarCarousel({callback}) {
     const [currentIndex, setCurrentIndex] = useState(0);    
 
-    const onImageChange= (type) =>
-    {
+    const onImageChange = async (type) => {
         switch (type) {
             case 'increment':
-                setCurrentIndex((currentIndex === imageNameList.length - 1) ? 0 : currentIndex + 1);
+                await setCurrentIndex((currentIndex === imageNameList.length - 1) ? 0 : currentIndex + 1);
                 break;
             case 'decrement':
-                setCurrentIndex((currentIndex === 0) ? imageNameList.length - 1 : currentIndex - 1);                
+                await setCurrentIndex((currentIndex === 0) ? imageNameList.length - 1 : currentIndex - 1);                
                 break;
             default:
                 throw new Error();
         }
-        
-        
-    }
-
-    useEffect(() => {
+   
         callback({image: `${imageNameList[currentIndex].name}.${imageNameList[currentIndex].filetype}`});
-    }, [currentIndex]);
+    };
 
     return (
         <Segment compact>
