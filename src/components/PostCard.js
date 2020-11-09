@@ -16,7 +16,7 @@ function PostCard({
     const moreDetail = '...(see detail for more)';
     const maxBodyLength = 50;
 
-    console.log(userAvatarImage);
+    //console.log(userAvatarImage);
 
   return (
     <Card fluid className="post-card">
