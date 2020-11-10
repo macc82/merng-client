@@ -13,6 +13,19 @@
   margin-top: 1.5rem;
 }
 
+.flexRegister {
+  display: flex;
+  text-align: left;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.flexRegister-computer {
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
 .post-card {
   height: 170px;
 }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Form } from 'semantic-ui-react';
+import { Grid, Button, Form } from 'semantic-ui-react';
 import { useMutation } from '@apollo/client';
 
 import { useForm } from '../util/hooks';
@@ -39,24 +39,46 @@ function Confirmation(props) {
         </div>
     );
 
-    return (
-        <div className="form-container">
+    const markup = (
+        <>
             <Form onSubmit={onSubmit} noValidate className={loading ? 'loading' : ''}>
-                <h1>User Confirmation</h1>
                 <p>Please enter the email account for confirmation</p>
                 <Form.Input label='email' placeholder="username@mail.com" name="email" value={values.email} error={errors.email ? true : false} type="email" onChange={onChange} required />
                 <Button type="submit" primary>Confirm</Button>
             </Form>
-            {Object.keys(errors).length > 0 && (
-                <div className="ui error message">
-                    <ul className="list">
-                        {Object.values(errors).map(value => (
-                            <li key={value}>{value}</li>
-                        ))}
-                    </ul>
-                </div>
-            )}
-        </div>
+            {
+                Object.keys(errors).length > 0 && (
+                    <div className="ui error message">
+                        <ul className="list">
+                            {Object.values(errors).map(value => (
+                                <li key={value}>{value}</li>
+                            ))}
+                        </ul>
+                    </div>
+                )
+            }
+        </>
+    );
+
+    return (
+        <Grid textAlign='center'>
+            <Grid.Row only='tablet mobile'>
+                <Grid.Column>
+                    <h1>User Confirmation</h1>
+                    <div className='flexRegister'>
+                        {markup}
+                    </div>
+                </Grid.Column>
+            </Grid.Row>
+            <Grid.Row only='computer'>
+                <Grid.Column width={10}>
+                    <h1>Register</h1>
+                    <div className='flexRegister flexRegister-computer'>
+                        {markup}
+                    </div>
+                </Grid.Column>
+            </Grid.Row>
+        </Grid>
     )
 }
 

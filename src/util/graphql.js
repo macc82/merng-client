@@ -158,6 +158,20 @@ const CONFIRMATION_USER = gql`
     }
 `;
 
+const LOGIN_USER = gql`
+    mutation login(
+        $username: String!
+        $password: String!
+    ) {
+        login(
+            username: $username
+            password: $password
+        ) {
+            id email username createdAt token
+        }
+    }
+`;
+
 export {
   FETCH_POSTS_QUERY, 
   CREATE_POST_MUTATION, 
@@ -167,5 +181,6 @@ export {
   SUBMIT_COMMENT_MUTATION, 
   FETCH_POST_QUERY,
   REGISTER_USER,
-  CONFIRMATION_USER
+  CONFIRMATION_USER,
+  LOGIN_USER
 };
