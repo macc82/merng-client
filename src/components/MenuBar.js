@@ -6,17 +6,19 @@ import ComputerMenuBar from './computer/MenuBar';
 
 function MenuBar() {
   const menuBar = (
-    <Segment inverted textAlign="center" fixed='top'>      
-        <Grid>
-          <Grid.Row only='mobile tablet'>
+    <Segment inverted textAlign="center" fixed='top'>
+      <Grid>
+        <Grid.Row only='mobile tablet'>
+          <Grid.Column>
             <MobileMenuBar />
-          </Grid.Row>
-          <Grid.Row only="computer">
-            <Grid.Column>
-              <ComputerMenuBar />
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row only="computer">
+          <Grid.Column>
+            <ComputerMenuBar />
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     </Segment>
   );
 

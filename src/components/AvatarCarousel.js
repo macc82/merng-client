@@ -1,65 +1,48 @@
-import React, { useState } from 'react'
-import { Image, Icon, Segment, Button, Header } from 'semantic-ui-react';
+import React from 'react'
+import { Dropdown } from 'semantic-ui-react';
 
-const imageNameList = [ 
-    {name: 'ade', filetype: 'jpg'},
-    {name: 'chris', filetype: 'jpg'},
-    {name: 'christian', filetype: 'jpg'},
-    {name: 'daniel', filetype: 'jpg'},
-    {name: 'elliot', filetype: 'jpg'},
-    {name: 'elyse', filetype: 'png'},
-    {name: 'helen', filetype: 'jpg'},
-    {name: 'jenny', filetype: 'jpg'},
-    {name: 'joe', filetype: 'jpg'},
-    {name: 'justen', filetype: 'jpg'},
-    {name: 'kristy', filetype: 'png'},
-    {name: 'laura', filetype: 'jpg'},
-    {name: 'matt', filetype: 'jpg'},
-    {name: 'matthew', filetype: 'png'},
-    {name: 'molly', filetype: 'png'},
-    {name: 'nan', filetype: 'jpg'},
-    {name: 'nom', filetype: 'jpg'},
-    {name: 'patrick', filetype: 'png'},
-    {name: 'rachel', filetype: 'png'},
-    {name: 'steve', filetype: 'jpg'},
-    {name: 'stevie', filetype: 'jpg'},
-    {name: 'tom', filetype: 'jpg'},
-    {name: 'veronika', filetype: 'jpg'},
-    {name: 'zoe', filetype: 'jpg'},
+const path = 'https://react.semantic-ui.com/images/avatar/large/';
+
+const imageNameList = [
+    { text: '', key: 'ade', value: 'ade.jpg', image: { avatar: true, src: `${path}ade.jpg` } },
+    { text: '', key: 'chris', value: 'chris.jpg', image: { avatar: true, src: `${path}chris.jpg` } },
+    { text: '', key: 'christian', value: 'christian.jpg', image: { avatar: true, src: `${path}christian.jpg` } },
+    { text: '', key: 'daniel', value: 'daniel.jpg', image: { avatar: true, src: `${path}daniel.jpg` } },
+    { text: '', key: 'elliot', value: 'elliot.jpg', image: { avatar: true, src: `${path}elliot.jpg` } },
+    { text: '', key: 'helen', value: 'helen.jpg', image: { avatar: true, src: `${path}helen.jpg` } },
+    { text: '', key: 'jenny', value: 'jenny.jpg', image: { avatar: true, src: `${path}jenny.jpg` } },
+    { text: '', key: 'joe', value: 'joe.jpg', image: { avatar: true, src: `${path}joe.jpg` } },
+    { text: '', key: 'justen', value: 'justen.jpg', image: { avatar: true, src: `${path}justen.jpg` } },
+    { text: '', key: 'laura', value: 'laura.jpg', image: { avatar: true, src: `${path}laura.jpg` } },
+    { text: '', key: 'matt', value: 'matt.jpg', image: { avatar: true, src: `${path}matt.jpg` } },
+    { text: '', key: 'matthew', value: 'matthew.png', image: { avatar: true, src: `${path}matthew.png` } },
+    { text: '', key: 'molly', value: 'molly.png', image: { avatar: true, src: `${path}molly.png` } },
+    { text: '', key: 'nan', value: 'nan.jpg', image: { avatar: true, src: `${path}nan.jpg` } },
+    { text: '', key: 'nom', value: 'nom.jpg', image: { avatar: true, src: `${path}nom.jpg` } },
+    { text: '', key: 'rachel', value: 'rachel.png', image: { avatar: true, src: `${path}rachel.png` } },
+    { text: '', key: 'steve', value: 'steve.jpg', image: { avatar: true, src: `${path}steve.jpg` } },
+    { text: '', key: 'stevie', value: 'stevie.jpg', image: { avatar: true, src: `${path}stevie.jpg` } },
+    { text: '', key: 'tom', value: 'tom.jpg', image: { avatar: true, src: `${path}tom.jpg` } },
+    { text: '', key: 'veronika', value: 'veronika.jpg', image: { avatar: true, src: `${path}veronika.jpg` } },
+    { text: '', key: 'zoe', value: 'zoe.jpg', image: { avatar: true, src: `${path}zoe.jpg` } },
 ];
 
-function AvatarCarousel({callback}) {
-    const [currentIndex, setCurrentIndex] = useState(0);    
-
-    const onImageChange = async (type) => {
-        switch (type) {
-            case 'increment':
-                await setCurrentIndex((currentIndex === imageNameList.length - 1) ? 0 : currentIndex + 1);
-                break;
-            case 'decrement':
-                await setCurrentIndex((currentIndex === 0) ? imageNameList.length - 1 : currentIndex - 1);                
-                break;
-            default:
-                throw new Error();
-        }
-   
-        callback({image: `${imageNameList[currentIndex].name}.${imageNameList[currentIndex].filetype}`});
-    };
-
+function AvatarCarousel({ callback }) {
+    
     return (
-        <Segment compact>
-            <Header as='h3' style={{margin: 'auto', textAlign: 'center'}}>Avatar</Header>
-            <Image
-                size="small"
-                style={{margin: '0.5rem auto'}}
-                src={`https://react.semantic-ui.com/images/avatar/large/${imageNameList[currentIndex].name}.${imageNameList[currentIndex].filetype}`}
-
-            />
-            <Button icon floated="left" onClick={() => onImageChange('decrement')}><Icon name='arrow circle left' size="big"/></Button>
-            <Button icon floated="right" onClick={() => onImageChange('increment')}><Icon name='arrow circle right' size="big"/></Button>
-        </Segment>
+        <span><b>Select avatar{' '}</b>
+    <Dropdown
+      inline
+      scrolling 
+      options={imageNameList}
+      defaultValue={imageNameList[0].value}
+      onChange={(e, data) => callback({image: data.value})}
+    />
+  </span>
     );
 
 }
 
 export default AvatarCarousel;
+
+export const DefaultAvatar = imageNameList[0].value;

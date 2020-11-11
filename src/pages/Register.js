@@ -4,6 +4,7 @@ import { useMutation } from '@apollo/client';
 
 import { useForm } from '../util/hooks';
 import AvatarCarousel from '../components/AvatarCarousel';
+import { DefaultAvatar } from '../components/AvatarCarousel';
 
 import { REGISTER_USER } from '../util/graphql';
 
@@ -15,7 +16,7 @@ function Register(props) {
         email: '',
         password: '',
         confirmPassword: '',
-        avatarImage: '',
+        avatarImage: DefaultAvatar,
         host: window.location.host
     });
 
@@ -25,9 +26,9 @@ function Register(props) {
             //props.history.push('/');
         },
         onError(err) {
-            if (err.graphQLErrors.length > 0)
+            if (err.graphQLErrors && err.graphQLErrors.length > 0)
                 setErrors(err.graphQLErrors[0].extensions.exception.errors);
-            else if (err.networkError.result.errors.length > 0)
+            else if (err.networkError && err.networkError.result.errors.length > 0)
                 err.networkError.result.errors.map(error => console.log(error.message));
         },
         variables: values
@@ -55,14 +56,15 @@ function Register(props) {
 
     const markup = (
         <>
-            <AvatarCarousel callback={onAvatarChange} />
+            
             <Form onSubmit={onSubmit} noValidate className={loading ? 'loading' : ''} style={{width: '350px'}}>
                 <Form.Input label='Username' placeholder="Username" name="username" value={values.username} error={errors.username ? true : false} type="text" onChange={onChange} required />
                 <Form.Input label='email' placeholder="username@mail.com" name="email" value={values.email} error={errors.email ? true : false} type="email" onChange={onChange} required />
                 <Form.Input label='Password' placeholder="Password" name="password" value={values.password} error={errors.password ? true : false} type="password" onChange={onChange} required />
                 <Form.Input label='Confirm Password' placeholder="Password" name="confirmPassword" value={values.confirmPassword} error={errors.confirmPassword ? true : false} type="password" onChange={onChange} required />
                 <Form.Input name="avatarImage" type="text" onChange={onChange} value={values.avatarImage} style={{ display: 'none' }} />
-                <Button type="submit" primary>Register</Button>
+                <AvatarCarousel callback={onAvatarChange} /><br/>
+                <Button type="submit" primary floated='right'>Register</Button>
             </Form>
             {Object.keys(errors).length > 0 && (
                 <div className="ui error message">

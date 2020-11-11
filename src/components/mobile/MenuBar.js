@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { Dropdown, Grid } from 'semantic-ui-react'
+import { Dropdown, Menu, Image } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 
 import { AuthContext } from '../../context/auth';
@@ -42,9 +42,23 @@ function MenuBar() {
             </>
         );
 
+    const iconMenu = (
+        <Dropdown item icon='bars' openOnFocus closeOnBlur closeOnEscape>
+            <Dropdown.Menu>
+                {homeItemBar}
+                <Dropdown.Divider />
+                {subMenuBar}
+            </Dropdown.Menu>
+        </Dropdown>
+    );
+
     const menuBar = (
-        <>
-            <Grid.Column textAlign='left' width={2}>
+        <Menu fixed="top" inverted pointing>
+            {iconMenu}
+            <Menu.Item fitted header style={{fontFamily: "'Bebas Neue', cursive", color: "teal", margin: "auto", fontSize: 'x-large'}}>Simple Social Media Project</Menu.Item>
+            <Menu.Item position='right' fitted>{user && <Image src={`https://react.semantic-ui.com/images/avatar/large/${user.avatarImage}`} avatar />}</Menu.Item>
+        </Menu>
+        /*    <Grid.Column textAlign='left' width={2}>
                 <Dropdown item icon='bars' openOnFocus closeOnBlur closeOnEscape>
                     <Dropdown.Menu>
                         {homeItemBar}
@@ -54,9 +68,10 @@ function MenuBar() {
                 </Dropdown>
             </Grid.Column>
             <Grid.Column width={14}>
-                <div className="logoMobile">Simple Social Media Project</div>
+                <div className="logoMobile">Simple Social Media Project{ user && <Image src={`https://react.semantic-ui.com/images/avatar/large/${user.avatarImage}`} avatar floated='right' /> }</div>
+                
             </Grid.Column>
-        </>
+        </>*/
     );
 
     return menuBar;

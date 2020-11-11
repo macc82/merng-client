@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { Menu } from 'semantic-ui-react'
+import { Menu, Image } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 
 import { AuthContext } from '../../context/auth';
@@ -12,13 +12,22 @@ function MenuBar() {
 
     const handleItemClick = (e, { name }) => setActiveItem(name);
 
+    const imageAvatar = user ? (
+        <>&nbsp;<Image src={`https://react.semantic-ui.com/images/avatar/large/${user.avatarImage}`} avatar /><span>{user.username}</span>&nbsp;</>
+    ) : (
+            ''
+        );
+
     const homeMenuItemBar = user ? (
         <Menu.Item
             name={user.username}
             active
             as={Link}
             to="/"
-        />
+            fitted
+        >{imageAvatar}
+        </Menu.Item>
+
     ) : (
             <Menu.Item
                 name='home'
@@ -55,10 +64,10 @@ function MenuBar() {
         );
 
     const menuBar = (
-        <Menu fixed="top" inverted pointing size='large' >
+        <Menu fixed="top" inverted pointing size='large'>
             {homeMenuItemBar}
-            <div className="logo">Simple Social Media Project</div>
-            {subMenuBar}
+            <Menu.Item fitted='vertically' header style={{ fontFamily: "'Bebas Neue', cursive", color: "teal", margin: "auto", fontSize: 'x-large' }}>Simple Social Media Project</Menu.Item>
+            <Menu.Menu fitted='vertically' position='right'>{subMenuBar}</Menu.Menu>
         </Menu>
     );
 
