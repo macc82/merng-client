@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Button, Form, Modal, Icon } from 'semantic-ui-react';
+import { Button, Form, Modal, Icon, Label } from 'semantic-ui-react';
 import { useMutation } from '@apollo/client';
 
 import { useForm, clearCache } from '../util/hooks';
@@ -47,14 +47,20 @@ function PostForm({ callback }){
           <Modal.Header>Create a post:</Modal.Header>
           <Modal.Content>
             <Form onSubmit={onSubmit}>
-              <Form.Field>
-                <Form.Input
+              <Form.Field style={{marginBottom: ".5em"}}>
+                <Form.TextArea
                   placeholder="Write new post content..."
                   name="body"
+                  maxLength="500"
+                  rows={4}
+                  style={{resize: "none"}}
                   onChange={onChange}
                   value={values.body}
                   error={Object.keys(errors).length > 0 ? true : false}
                 />
+              </Form.Field>
+              <Form.Field style={{textAlign: "right"}}>
+                <Label style={{fontSize: ".8rem", fontWeight: "bold", color:"rgba(0,0,0,.4)", background: "transparent", padding: "0"}}>{values.body.length + "/500"}</Label>
               </Form.Field>
             </Form>
             {Object.keys(errors).length > 0 && (
