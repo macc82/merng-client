@@ -16,7 +16,7 @@ function PostCard({
     const moreDetail = '...(see detail for more)';
     const maxBodyLength = 50;
 
-    console.log(DateTime.fromMillis(Number.parseInt(createdAt)));
+    //console.log(DateTime.fromMillis(Number.parseInt(createdAt)));
 
     return (
         <Card className="post-card">

@@ -9,6 +9,7 @@ import { AuthProvider } from './context/auth';
 import AuthRoute from './util/AuthRoute';
 
 import MenuBar from './components/MenuBar';
+import BottomBar from './components/BottomBar';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -26,6 +27,7 @@ function App() {
           <Route exact path='/register' component={Register}/>
           <Route exact path='/posts/:postId' component={SinglePost} />
           <Route exact path='/confirmation/:vtokenId' component={Confirmation} />
+          <BottomBar />
         </Container>
       </Router>
     </AuthProvider>

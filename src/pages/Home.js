@@ -52,7 +52,7 @@ function Home() {
                     </Card.Group>
                 </Grid.Column>
             </Grid.Row>
-            <Grid.Row>
+            <Grid.Row style={{marginBottom: "2.5rem"}}>
                 <Grid.Column textAlign='right'>
                     <Pagination totalPages={totalPages} onPageChange={onPageChange} activePage={currentPage} />
                 </Grid.Column>

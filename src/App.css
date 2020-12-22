@@ -57,3 +57,10 @@
 .ui.menu:not(.vertical) .right.item, .ui.menu:not(.vertical) .right.menu {
   margin-left: 0px !important;
 }
+.ui.menu::after{
+  content: inherit;
+}
+
+.bottomBar .item::before{
+  content: inherit!important;
+}
