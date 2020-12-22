@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Button, Card, Icon, Label, Image } from 'semantic-ui-react';
-import moment from 'moment';
+import { DateTime } from "luxon";
 import { Link } from 'react-router-dom';
 
 import { AuthContext } from '../../context/auth';
@@ -16,7 +16,7 @@ function PostCard({
     const moreDetail = '...(see detail for more)';
     const maxBodyLength = 50;
 
-    //console.log(userAvatarImage);
+    console.log(DateTime.fromMillis(Number.parseInt(createdAt)));
 
     return (
         <Card className="post-card">
@@ -28,7 +28,7 @@ function PostCard({
                 />
                 <Card.Header>{username}</Card.Header>
                 <Card.Meta as={Link} to={`/posts/${id}`}>
-                    {moment(createdAt).fromNow(true)}
+                    {DateTime.fromMillis(Number.parseInt(createdAt)).toRelative()}
                 </Card.Meta>
                 <Card.Description>{body.length > maxBodyLength ? body.substr(0, maxBodyLength) + moreDetail : body}</Card.Description>
             </Card.Content>

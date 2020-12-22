@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Card, Image } from 'semantic-ui-react';
-import moment from 'moment';
+import { DateTime } from "luxon";
 
 import { AuthContext } from '../context/auth';
 import DeleteButton from './DeleteButton';
@@ -20,7 +20,7 @@ function CommentCard({ id, username, comment }) {
                     src={`https://react.semantic-ui.com/images/avatar/large/${comment.commentAvatarImage}`}
                 />
                 <Card.Header textAlign={textAlign}>{comment.username}</Card.Header>
-                <Card.Meta textAlign={textAlign}>{moment(comment.createdAt).fromNow()}</Card.Meta>
+                <Card.Meta textAlign={textAlign}>{DateTime.fromMillis(Number.parseInt(comment.createdAt)).toRelative()}</Card.Meta>
                 <Card.Description>{comment.body}</Card.Description>
             </Card.Content>
             <hr />

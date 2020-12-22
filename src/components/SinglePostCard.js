@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import moment from 'moment';
+import { DateTime } from "luxon";
 import { Card, Button, Label, Icon } from 'semantic-ui-react';
 
 import { AuthContext } from '../context/auth';
@@ -23,7 +23,7 @@ function SinglePostCard({ post: { id,
         <Card fluid color='teal'>
             <Card.Content>
                 <Card.Header>{username}</Card.Header>
-                <Card.Meta>{moment(createdAt).fromNow()}</Card.Meta>
+                <Card.Meta>{DateTime.fromMillis(Number.parseInt(createdAt)).toRelative()}</Card.Meta>
                 <Card.Description>{body}</Card.Description>
             </Card.Content>
             <hr />
