@@ -39,7 +39,7 @@ function SinglePost(props) {
         } = data.getPost;
 
         postMarkup = (
-            <Grid style={{ marginTop: '1.5rem' }}>
+            <Grid style={{ paddingTop: '.8rem', paddingBottom: '2.8rem' }}>
                 <Grid.Row only='computer'>
                     <Grid.Column width={2}>
                         <Image
@@ -57,8 +57,8 @@ function SinglePost(props) {
                                 floated="right"
                                 style={{ marginBottom: '15px' }}
                             />}
-                        {comments.slice(limit * (currentPage - 1), limit * currentPage).map((comment) => (
-                                <CommentCard id={id} username={username} comment={comment} />
+                        {comments.slice(limit * (currentPage - 1), limit * currentPage).map((comment, index) => (
+                                <CommentCard key={index} id={id} username={username} comment={comment} />
                             )
                         )}
                     </Grid.Column>
@@ -78,8 +78,8 @@ function SinglePost(props) {
                                 floated="right"
                                 style={{ marginBottom: '15px' }}
                             />}
-                        {comments.slice(limit * (currentPage - 1), limit * currentPage).map((comment) => (
-                                <CommentCard id={id} username={username} comment={comment} />
+                        {comments.slice(limit * (currentPage - 1), limit * currentPage).map((comment, index) => (
+                                <CommentCard key={index} id={id} username={username} comment={comment} />
                             )
                         )}
                     </Grid.Column>
