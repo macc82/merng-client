@@ -16,11 +16,11 @@ const BottomBar = () => {
       <Menu.Menu icon="labeled" position="right">
         <Menu.Item fitted
           href="https://github.com/macc82/merng-server"
-          target="_blank"><Popup trigger={<Icon name="github" />} content='View code of BackEnd' /></Menu.Item>
+          target="_blank"><Popup trigger={<Icon name="github" />} content='View the BackEnd source code on GitHub' /></Menu.Item>
         <Menu.Item fitted
           href="https://github.com/macc82/merng-client"
           target="_blank"
-        ><Popup trigger={<Icon name="github" />} content='View code of FrontEnd' /></Menu.Item>
+        ><Popup trigger={<Icon name="github" />} content='View the FrontEnd source code on GitHub' /></Menu.Item>
       </Menu.Menu>
     </Menu>
   );
