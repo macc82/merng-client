@@ -58,7 +58,7 @@ function Register(props) {
         <>
             
             <Form onSubmit={onSubmit} noValidate className={loading ? 'loading' : ''} style={{width: '350px'}}>
-                <Form.Input label='Username' placeholder="Username" name="username" value={values.username} error={errors.username ? true : false} type="text" onChange={onChange} required />
+                <Form.Input label='Username' placeholder="Username" name="username" value={values.username} error={errors.username ? true : false} type="text" onChange={onChange} required maxLength={50} />
                 <Form.Input label='email' placeholder="username@mail.com" name="email" value={values.email} error={errors.email ? true : false} type="email" onChange={onChange} required />
                 <Form.Input label='Password' placeholder="Password" name="password" value={values.password} error={errors.password ? true : false} type="password" onChange={onChange} required />
                 <Form.Input label='Confirm Password' placeholder="Password" name="confirmPassword" value={values.confirmPassword} error={errors.confirmPassword ? true : false} type="password" onChange={onChange} required />
