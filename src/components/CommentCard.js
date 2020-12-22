@@ -21,7 +21,7 @@ function CommentCard({ id, username, comment }) {
                 />
                 <Card.Header textAlign={textAlign}>{comment.username}</Card.Header>
                 <Card.Meta textAlign={textAlign}>{DateTime.fromMillis(Number.parseInt(comment.createdAt)).toRelative()}</Card.Meta>
-                <Card.Description>{comment.body}</Card.Description>
+                <Card.Description style={{textAlign: "justify"}}>{comment.body}</Card.Description>
             </Card.Content>
             <hr />
             <Card.Content extra>

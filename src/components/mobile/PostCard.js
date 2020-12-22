@@ -24,7 +24,7 @@ function PostCard({
                 <Card.Meta as={Link} to={`/posts/${id}`}>
                     {DateTime.fromMillis(Number.parseInt(createdAt)).toRelative()}
                 </Card.Meta>
-                <Card.Description>{body.length > maxBodyLength ? body.substr(0, maxBodyLength) + moreDetail : body}</Card.Description>
+                <Card.Description style={{textAlign: "justify"}}>{body.length > maxBodyLength ? body.substr(0, maxBodyLength) + moreDetail : body}</Card.Description>
             </Card.Content>
             <Card.Content extra>
                 <LikeButton user={user} post={{ id, likes, likesCount }} />

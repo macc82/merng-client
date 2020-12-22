@@ -24,7 +24,7 @@ function SinglePostCard({ post: { id,
             <Card.Content>
                 <Card.Header>{username}</Card.Header>
                 <Card.Meta>{DateTime.fromMillis(Number.parseInt(createdAt)).toRelative()}</Card.Meta>
-                <Card.Description>{body}</Card.Description>
+                <Card.Description style={{textAlign: "justify"}}>{body}</Card.Description>
             </Card.Content>
             <hr />
             <Card.Content extra>
